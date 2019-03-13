@@ -1,13 +1,13 @@
 <?php
 
-namespace bastardijke\yii\seo\migrations;
+namespace drtsb\yii\seo\migrations;
 
 use yii\db\Migration;
 
 /**
- * Handles the creation of table `seo_pages`.
+ * Handles the creation of table `seo_static`.
  */
-class m190301_072527_create_seo_table extends Migration
+class m190301_072527_create_seo_static_table extends Migration
 {
     /**
      * @inheritdoc
@@ -20,7 +20,7 @@ class m190301_072527_create_seo_table extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=InnoDB';
         }
  
-        $this->createTable('seo_pages', [
+        $this->createTable('seo_static', [
             'id' => $this->primaryKey(),
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),
@@ -29,11 +29,12 @@ class m190301_072527_create_seo_table extends Migration
             'meta_title' => $this->string(),
             'meta_description' => $this->string(),
             'meta_keywords' => $this->string(),
+            'meta_canonical' => $this->string()->defaultValue('NULL'),
             'meta_noindex' => $this->boolean()->notNull()->defaultValue(false),
             'meta_nofollow' => $this->boolean()->notNull()->defaultValue(false),
         ], $tableOptions);
 
-        $this->insert( 'seo_pages', [
+        $this->insert( 'seo_static', [
             'created_at' => time(),
             'updated_at' => time(),
             'controller' => '*',
@@ -46,6 +47,6 @@ class m190301_072527_create_seo_table extends Migration
 
     public function safeDown()
     {
-        $this->dropTable( 'seo_pages' );
+        $this->dropTable( 'seo_static' );
     }
 }

@@ -4,12 +4,10 @@ use yii\helpers\Html;
 use yii\helpers\StringHelper;
 use yii\grid\GridView;
 
-use bastardijke\yii\seo\Module;
-
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Module::t('seo', 'SEO');
+$this->title = Yii::t('seo', 'SEO');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="seo-index">
@@ -17,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Module::t('seo', 'Create'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('seo', 'Create'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

@@ -1,6 +1,6 @@
 <?php
 
-namespace bastardijke\yii\seo;
+namespace drtsb\yii\seo;
 
 use yii\web\AssetBundle;
 

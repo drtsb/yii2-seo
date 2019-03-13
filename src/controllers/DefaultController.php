@@ -1,6 +1,6 @@
 <?php
 
-namespace bastardijke\yii\seo\controllers;
+namespace drtsb\yii\seo\controllers;
 
 use Yii;
 use yii\data\ActiveDataProvider;
@@ -9,12 +9,11 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
-use bastardijke\yii\seo\Module;
-use bastardijke\yii\seo\models\Seo;
-use bastardijke\yii\seo\models\SeoSearch;
+use drtsb\yii\seo\models\SeoStatic;
+use drtsb\yii\seo\models\SeoStaticSearch;
 
 /**
- * SeoController implements the CRUD actions for Seo model.
+ * SeoController implements the CRUD actions for SeoStatic model.
  */
 class DefaultController extends Controller
 {
@@ -43,15 +42,15 @@ class DefaultController extends Controller
     }
 
     /**
-     * Lists all Seo models.
+     * Lists all SeoStatic models.
      * @return mixed
      */
     public function actionIndex()
     {
 
-        $searchModel = new SeoSearch();
+        $searchModel = new SeoStaticSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-        $dataProvider->setPagination(false);
+        $dataProvider->setPagination($this->module->pagination);
         $dataProvider->setSort(['defaultOrder' => ['controller' => SORT_ASC, 'action' => SORT_ASC, ]]);
 
         return $this->render('index', [
@@ -62,7 +61,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * Displays a single Seo model.
+     * Displays a single SeoStatic model.
      * @param integer $id
      * @return mixed
      */
@@ -74,13 +73,13 @@ class DefaultController extends Controller
     }
 
     /**
-     * Creates a new Seo model.
+     * Creates a new SeoStatic model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Seo();
+        $model = new SeoStatic();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -92,7 +91,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * Updates an existing Seo model.
+     * Updates an existing SeoStatic model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -111,7 +110,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * Deletes an existing Seo model.
+     * Deletes an existing SeoStatic model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -124,18 +123,18 @@ class DefaultController extends Controller
     }
 
     /**
-     * Finds the Seo model based on its primary key value.
+     * Finds the SeoStatic model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Seo the loaded model
+     * @return SeoStatic the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Seo::findOne($id)) !== null) {
+        if (($model = SeoStatic::findOne($id)) !== null) {
             return $model;
         } else {
-            throw new NotFoundHttpException( Module::t('backend', 'The requested page does not exist.') );
+            throw new NotFoundHttpException( 'The requested page does not exist.' );
         }
     }
 }

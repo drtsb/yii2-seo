@@ -2,13 +2,11 @@
 
 use yii\helpers\Html;
 
-use bastardijke\yii\seo\Module;
-
 /* @var $this yii\web\View */
-/* @var $model common\components\seo\models\Seo */
+/* @var $model drtsb\yii\seo\models\SeoStatic */
 
-$this->title = Module::t('seo', 'Create');
-$this->params['breadcrumbs'][] = ['label' => Module::t('seo', 'SEO'), 'url' => ['index']];
+$this->title = Yii::t('seo', 'Create');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('seo', 'SEO'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="seo-create">

@@ -1,14 +1,15 @@
 <?php
 
-namespace bastardijke\yii\seo\widgets;
+namespace drtsb\yii\seo\widgets;
 
 use Yii;
 use yii\helpers\Html;
 use yii\base\InvalidConfigException;
 
-use bastardijke\yii\seo\SeoAsset;
+use drtsb\yii\seo\SeoAsset;
+use drtsb\yii\seo\Module;
 
-class SeoWidget extends \yii\base\Widget
+class SeoFieldsWidget extends \yii\base\Widget
 {
 
     public $form = null;
@@ -17,7 +18,6 @@ class SeoWidget extends \yii\base\Widget
     
     public function init()
     {
-
         parent::init();
 
         if (is_null($this->form) || is_null($this->model) ) {
@@ -39,6 +39,11 @@ class SeoWidget extends \yii\base\Widget
         $html[] = $this->form->field($this->model, 'meta_description')->textInput(['maxlength'=>true]);
 
         $html[] = $this->form->field($this->model, 'meta_keywords')->textInput(['maxlength'=>true]);
+
+        $html[] = $this->form->field($this->model, 'meta_noindex')->checkBox();
+
+        $html[] = $this->form->field($this->model, 'meta_nofollow')->checkBox();
+
 
         $html[] = Html::endTag('fieldset');
 

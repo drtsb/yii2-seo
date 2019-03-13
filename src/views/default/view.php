@@ -3,13 +3,11 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
-use bastardijke\yii\seo\Module;
-
 /* @var $this yii\web\View */
-/* @var $model common\components\seo\models\Seo */
+/* @var $model drtsb\yii\seo\models\SeoStatic */
 
 $this->title = $model->title;
-$this->params['breadcrumbs'][] = ['label' => Module::t('seo', 'SEO'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('seo', 'SEO'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
@@ -18,11 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a(Module::t('seo', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a(Module::t('seo', 'Delete'), ['delete', 'id' => $model->id], [
+        <?= Html::a(Yii::t('seo', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('seo', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => Module::t('seo', 'Are you sure you want to delete this item?'),
+                'confirm' => Yii::t('seo', 'Are you sure you want to delete this item?'),
                 'method' => 'post',
             ],
         ]) ?>

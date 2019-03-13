@@ -1,14 +1,14 @@
 <?php
 
-namespace common\components\seo\models;
+namespace drtsb\yii\seo\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
 /**
- * SeoSearch represents the model behind the search form of `common\models\Seo`.
+ * SeoStaticSearch represents the model behind the search form of `drtsb\yii\seo\models\SeoStatic`.
  */
-class SeoSearch extends Seo
+class SeoStaticSearch extends SeoStatic
 {
     /**
      * {@inheritdoc}
@@ -39,7 +39,7 @@ class SeoSearch extends Seo
      */
     public function search($params)
     {
-        $query = Seo::find();
+        $query = SeoStatic::find();
 
         // add conditions that should always apply here
 

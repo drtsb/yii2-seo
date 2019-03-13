@@ -1,27 +1,27 @@
 {
-    "name": "bastardijke/yii2-seo",
+    "name": "drtsb/yii2-seo",
     "description": "Yii2 SEO module.",
     "type": "yii2-extension",
     "keywords": [ "yii", "yii2", "yii 2", "extension", "module", "seo" ],
-    "homepage": "https://github.com/bastardijke/yii2-seo",
+    "homepage": "https://github.com/drtsb/yii2-seo",
     "license": "MIT",
     "authors": [
         {
-            "name": "bastardijke",
-            "homepage": "https://github.com/bastardijke",
+            "name": "drtsb",
+            "homepage": "https://github.com/drtsb",
             "role": "Developer"
         }
     ],
     "support": {
-        "issues": "https://github.com/bastardijke/yii2-seo/issues",
-        "source": "https://github.com/bastardijke/yii2-seo"
+        "issues": "https://github.com/drtsb/yii2-seo/issues",
+        "source": "https://github.com/drtsb/yii2-seo"
     },
     "require": {
         "yiisoft/yii2": "^2.0.0"
     },
     "autoload": {
         "psr-4": {
-            "bastardijke\\yii2-seo\\": ""
+            "drtsb\\yii\\seo\\": "src/"
         }
     }
 }
