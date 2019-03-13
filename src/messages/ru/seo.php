@@ -26,4 +26,6 @@ return [
 	'Created At' => 'Создано',
 	'Updated At' => 'Изменено',
 
+	'Are you sure you want to delete this item?' => 'Вы действительно хотите удалить эту запись?',
+
 ];

@@ -3,10 +3,8 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-use bastardijke\yii\seo\Module;
-
 /* @var $this yii\web\View */
-/* @var $model common\components\seo\models\Seo */
+/* @var $model drtsb\yii\seo\models\SeoStatic */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -29,7 +27,7 @@ use bastardijke\yii\seo\Module;
     <?= $form->field($model, 'meta_nofollow')->checkBox() ?>
 
     <div class="form-group">
-        <?= Html::submitButton(Module::t('seo', 'Save'), ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton(Yii::t('seo', 'Save'), ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

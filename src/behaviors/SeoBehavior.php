@@ -1,13 +1,13 @@
 <?php
 
-namespace bastardijke\yii\seo\behaviors;
+namespace drtsb\yii\seo\behaviors;
 
 use Yii;
 use yii\base\ActionEvent;
 use yii\base\Behavior;
 use yii\web\Controller;
 
-use bastardijke\yii\seo\models\Seo;
+use drtsb\yii\seo\models\SeoStatic;
 
 class SeoBehavior extends Behavior
 {
@@ -29,7 +29,7 @@ class SeoBehavior extends Behavior
     public function beforeAction($event)
     {
 
-        $seo = Seo::findByControllerAndAction($this->owner->id, $this->owner->action->id);
+        $seo = SeoStatic::findByControllerAndAction($this->owner->id, $this->owner->action->id);
 
         $this->owner->view->title = $seo->meta_title;
 
