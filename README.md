@@ -30,7 +30,7 @@ The extension consists of 2 parts:
 
 First of all, you need to apply migrations
 ```
-yii migrate --migrationPath=@vendor/drtsb/yii2-seo/migrations
+yii migrate --migrationPath=@vendor/drtsb/yii2-seo/src/migrations
 ```
 or add
 ```php
