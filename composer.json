@@ -17,11 +17,26 @@
         "source": "https://github.com/drtsb/yii2-seo"
     },
     "require": {
-        "yiisoft/yii2": "^2.0.0"
+        "yiisoft/yii2": "~2.0.14"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.3",
+        "squizlabs/php_codesniffer": "*",
+        "phpmd/phpmd": "@stable",
+        "codeception/specify": "^0.4.3",
+        "codeception/verify": "^0.3.1",
+        "codeception/base": "*"
     },
     "autoload": {
         "psr-4": {
-            "drtsb\\yii\\seo\\": "src/"
+            "drtsb\\yii\\seo\\": "src/",
+            "drtsb\\yii\\seo\\tests\\": "tests/"
         }
-    }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
 }
