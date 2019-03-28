@@ -2,6 +2,8 @@
 
 Yii2 SEO module
 
+[![Latest Stable Version](https://poser.pugx.org/drtsb/yii2-seo/v/stable)](https://packagist.org/packages/drtsb/yii2-seo) [![Total Downloads](https://poser.pugx.org/drtsb/yii2-seo/downloads)](https://packagist.org/packages/drtsb/yii2-seo) [![License](https://poser.pugx.org/drtsb/yii2-seo/license)](https://packagist.org/packages/drtsb/yii2-seo)
+
 Installation
 ------------
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
@@ -32,7 +34,7 @@ First of all, you need to apply migrations
 ```
 yii migrate --migrationPath=@vendor/drtsb/yii2-seo/src/migrations
 ```
-or add
+or use [namespaced migrations](https://www.yiiframework.com/doc/guide/2.0/en/db-migrations#namespaced-migrations) and add
 ```php
 'controllerMap' => [
     ...
@@ -108,5 +110,28 @@ add to model's form
 
 Register meta tags at frontend view
 ```php
+use drtsb\yii\seo\widgets\MetaTagsWidget;
+
 MetaTagsWidget::widget(['view' => $this, 'model' => $model]);
+```
+
+You can also generate SEO values depending on model's attributes using **dataClosure** param
+```php
+public function behaviors()
+{
+    return [
+        'seo' => [
+            'class' => 'drtsb\yii\seo\behaviors\SeoModelBehavior',
+            'dataClosure' => function($model) {
+                return [
+                    'meta_title' => $model->title . ' Title',
+                    'meta_description' => $model->title . ' Description',
+                    'meta_keywords' => $model->title . ' Keywords',
+                    'meta_noindex' => true,
+                    'meta_nofollow' => true,
+                ];
+            },
+        ],
+    ];
+}
 ```

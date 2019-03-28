@@ -38,4 +38,5 @@ class PostCest
         $I->assertEquals('Some Post', $post->title);
         $I->assertEquals('Some Post Meta Title', $post->seo->meta_title);
     }
+
 }
