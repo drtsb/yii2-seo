@@ -2,7 +2,7 @@
 
 Yii2 SEO module
 
-[![Latest Stable Version](https://poser.pugx.org/drtsb/yii2-seo/v/stable)](https://packagist.org/packages/drtsb/yii2-seo) [![Total Downloads](https://poser.pugx.org/drtsb/yii2-seo/downloads)](https://packagist.org/packages/drtsb/yii2-seo) [![License](https://poser.pugx.org/drtsb/yii2-seo/license)](https://packagist.org/packages/drtsb/yii2-seo)
+[![Latest Stable Version](https://poser.pugx.org/drtsb/yii2-seo/v/stable)](https://packagist.org/packages/drtsb/yii2-seo) [![Total Downloads](https://poser.pugx.org/drtsb/yii2-seo/downloads)](https://packagist.org/packages/drtsb/yii2-seo) [![License](https://poser.pugx.org/drtsb/yii2-seo/license)](https://packagist.org/packages/drtsb/yii2-seo) [![Build Status](https://travis-ci.org/drtsb/yii2-seo.svg?branch=master)](https://travis-ci.org/drtsb/yii2-seo)
 
 Installation
 ------------
@@ -129,6 +129,7 @@ public function behaviors()
                     'meta_keywords' => $model->title . ' Keywords',
                     'meta_noindex' => true,
                     'meta_nofollow' => true,
+                    'rel_canonical' => 'site/index', // or 'http://some.site'
                 ];
             },
         ],
