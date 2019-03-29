@@ -76,7 +76,7 @@ class SeoStatic extends Seo
      * @throws ErrorException if no model found
      * @return SeoStatic
      */
-    public function findByControllerAndAction($controller, $action)
+    public static function findByControllerAndAction($controller, $action)
     {
         $seo = self::find()
             ->where(['controller' => [$controller, '*'], 'action' => [$action, '*'], ])
