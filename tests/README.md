@@ -10,7 +10,7 @@ Install [composer](http://getcomposer.org/download/) dependencies
 composer install
 ``` 
 
-Rename **codeception.yml.dist** to **codeception.yml** and **/tests/\_app/config/db.php.dist** to **db.php**
+Rename **codeception.yml.dist** to **codeception.yml** and **/tests/\_app/config/db-local.php.dist** to **db-local.php**
 Then set up your DB settings in both files.
 
 Apply migrations
