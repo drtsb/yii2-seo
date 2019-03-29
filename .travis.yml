@@ -18,7 +18,7 @@ before_script:
 
 # initialize database
  - mysql -e 'CREATE DATABASE `yii2seotest`;';
- - php tests/_app/yii.php migrate/up --interactive=0
+ - php tests/_app/yii migrate/up --interactive=0
 
 script:
  - composer validate --no-check-lock
