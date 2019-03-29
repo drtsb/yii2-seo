@@ -17,7 +17,7 @@ class SeoStaticSearch extends SeoStatic
     {
         return [
             [['id', 'created_at', 'updated_at', 'meta_noindex', 'meta_nofollow'], 'integer'],
-            [['controller', 'action', 'meta_title', 'meta_description', 'meta_keywords'], 'safe'],
+            [['controller', 'action', 'meta_title', 'meta_description', 'meta_keywords', 'rel_canonical'], 'safe'],
         ];
     }
 
@@ -68,7 +68,8 @@ class SeoStaticSearch extends SeoStatic
             ->andFilterWhere(['like', 'action', $this->action])
             ->andFilterWhere(['like', 'meta_title', $this->meta_title])
             ->andFilterWhere(['like', 'meta_description', $this->meta_description])
-            ->andFilterWhere(['like', 'meta_keywords', $this->meta_keywords]);
+            ->andFilterWhere(['like', 'meta_keywords', $this->meta_keywords])
+            ->andFilterWhere(['like', 'rel_canonical', $this->rel_canonical]);
 
         return $dataProvider;
     }

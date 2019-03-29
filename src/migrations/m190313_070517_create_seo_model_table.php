@@ -27,7 +27,7 @@ class m190313_070517_create_seo_model_table extends Migration
             'meta_title' => $this->string(),
             'meta_description' => $this->string(),
             'meta_keywords' => $this->string(),
-            'meta_canonical' => $this->string()->defaultValue(null),
+            'rel_canonical' => $this->string()->defaultValue(null),
             'meta_noindex' => $this->boolean()->notNull()->defaultValue(false),
             'meta_nofollow' => $this->boolean()->notNull()->defaultValue(false),
             'use_common' => $this->boolean()->notNull()->defaultValue(false),

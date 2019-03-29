@@ -6,6 +6,7 @@ use Yii;
 use yii\base\ActionEvent;
 use yii\base\Behavior;
 use yii\web\Controller;
+use yii\helpers\Url;
 
 use drtsb\yii\seo\models\SeoStatic;
 
@@ -48,7 +49,10 @@ class SeoBehavior extends Behavior
             'content' => $seo->index.','.$seo->follow,
         ], 'robots');
 
-        //\Yii::$app->view->registerMetaTag(Yii::$app->params['pageDefaultAuthor'],"default_author");
+        \Yii::$app->view->registerLinkTag([
+            'rel' => 'canonical',
+            'href' => Url::to($seo->rel_canonical, true)
+        ], 'canonical');
 
         return true;
     }

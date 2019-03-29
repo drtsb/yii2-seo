@@ -35,6 +35,7 @@ class SeoModelCest
         $I->seeInSource('<meta name="description" content="Post 1 Meta Description">');
         $I->seeInSource('<meta name="keywords" content="Post 1 Meta Keywords">');
         $I->seeInSource('<meta name="robots" content="index,follow">');
+        $I->seeInSource('<link href="http://somepost.com" rel="canonical">');
     }
 
     public function checkSitePostWithoutSeoModel(FunctionalTester $I)

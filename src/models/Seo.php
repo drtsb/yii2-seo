@@ -35,7 +35,7 @@ abstract class Seo extends \yii\db\ActiveRecord
     {
         return [
             [['meta_noindex', 'meta_nofollow', ], 'boolean'],
-            [['meta_title', 'meta_description', 'meta_keywords'], 'string', 'max' => 255],
+            [['meta_title', 'meta_description', 'meta_keywords', 'rel_canonical'], 'string', 'max' => 255],
         ];
     }
 
@@ -50,6 +50,7 @@ abstract class Seo extends \yii\db\ActiveRecord
             'meta_keywords' => Yii::t('seo', 'Meta Keywords'),
             'meta_noindex' => Yii::t('seo', 'NOINDEX'),
             'meta_nofollow' => Yii::t('seo', 'NOFOLLOW'),
+            'rel_canonical' => Yii::t('seo', 'Canonical Link'),
         ];
     }
 
@@ -67,6 +68,14 @@ abstract class Seo extends \yii\db\ActiveRecord
     public function getFollow()
     {
         return $this->meta_nofollow ? 'nofollow' : 'follow';
+    }
+
+    /**
+     * @return string
+     */
+    public function getRobots()
+    {
+        return $this->index.','.$this->follow;
     }
 
 }

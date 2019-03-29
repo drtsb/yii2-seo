@@ -11,6 +11,7 @@ return [
         'meta_title' => 'Site Index Meta Title',
         'meta_description' => 'Site Index Meta Description',
         'meta_keywords' => 'Site Index Meta Keywords',
+        'rel_canonical' => 'site/index',
     ],
     'seo-site-any-action' => [
         'created_at' => $time,
@@ -42,5 +43,6 @@ return [
         'meta_keywords' => 'Any Controller Any Action Meta Keywords',
         'meta_noindex' => true,
         'meta_nofollow' => true,
+        'rel_canonical' => 'https://google.com',
     ],
 ];

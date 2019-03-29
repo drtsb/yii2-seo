@@ -4,6 +4,7 @@ namespace drtsb\yii\seo\widgets;
 
 use Yii;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\base\InvalidConfigException;
 
 class MetaTagsWidget extends \yii\base\Widget
@@ -22,23 +23,28 @@ class MetaTagsWidget extends \yii\base\Widget
 
     public function run()
     {
-        if ($this->model->seo) {
-            $this->view->title = $this->model->seo->meta_title ?: $this->model->title;
+        if ($seo = $this->model->seo) {
+            $this->view->title = $seo->meta_title ?: $this->model->title;
 
             $this->view->registerMetaTag([
                 'name' => 'description',
-                'content' => $this->model->seo->meta_description,
+                'content' => $seo->meta_description,
             ], 'description');
 
             $this->view->registerMetaTag([
                 'name' => 'keywords',
-                'content' => $this->model->seo->meta_keywords,
+                'content' => $seo->meta_keywords,
             ], 'keywords');
 
             $this->view->registerMetaTag([
                 'name' => 'robots',
-                'content' => $this->model->seo->index.','.$this->model->seo->follow,
+                'content' => $seo->robots,
             ], 'robots');
+
+            $this->view->registerLinkTag([
+                'rel' => 'canonical',
+                'href' => Url::to($seo->rel_canonical, true)
+            ], 'canonical');
         }
     }
 

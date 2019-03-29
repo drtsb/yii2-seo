@@ -1,5 +1,7 @@
 <?php
 
+use yii\helpers\Url;
+
 use app\fixtures\SeoStaticFixture;
 
 class SeoStaticCest
@@ -25,6 +27,7 @@ class SeoStaticCest
         $I->seeInSource('<meta name="description" content="Site Index Meta Description">');
         $I->seeInSource('<meta name="keywords" content="Site Index Meta Keywords">');
         $I->seeInSource('<meta name="robots" content="index,follow">');
+        $I->seeInSource('<link href="'.Url::to('site/index', true).'" rel="canonical">');
     }
 
     public function checkSiteAnyAction(FunctionalTester $I)
@@ -52,6 +55,7 @@ class SeoStaticCest
         $I->seeInSource('<meta name="description" content="Any Controller Any Action Meta Description">');
         $I->seeInSource('<meta name="keywords" content="Any Controller Any Action Meta Keywords">');
         $I->seeInSource('<meta name="robots" content="noindex,nofollow">');
+        $I->seeInSource('<link href="https://google.com" rel="canonical">');
     }
 
 }

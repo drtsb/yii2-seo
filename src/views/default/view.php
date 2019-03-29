@@ -37,6 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'meta_title',
             'meta_description',
             'meta_keywords',
+            'rel_canonical:url',
             'meta_noindex:boolean',
             'meta_nofollow:boolean',
         ],

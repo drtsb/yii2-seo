@@ -40,6 +40,8 @@ class SeoFieldsWidget extends \yii\base\Widget
 
         $html[] = $this->form->field($this->model, 'meta_keywords')->textInput(['maxlength'=>true]);
 
+        $html[] = $this->form->field($this->model, 'rel_canonical')->textInput(['maxlength'=>true]);
+
         $html[] = $this->form->field($this->model, 'meta_noindex')->checkBox();
 
         $html[] = $this->form->field($this->model, 'meta_nofollow')->checkBox();
