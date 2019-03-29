@@ -20,6 +20,9 @@ before_script:
  - mysql -e 'CREATE DATABASE `yii2seotest`;';
  - php tests/_app/yii migrate/up --interactive=0
 
+# codeception config
+ - cp codeception.yml.dist codeception.yml
+
 script:
  - composer validate --no-check-lock
- - vendor/bin/codecept run $CODECEPTION_FLAGS
+ - vendor/bin/codecept run
