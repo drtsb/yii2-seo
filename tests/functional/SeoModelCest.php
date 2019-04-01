@@ -42,7 +42,11 @@ class SeoModelCest
     {
         $I->amOnRoute('site/post', ['id' => 2]);
         $I->wantTo('see empty seo values');
-        $I->seeInTitle('');
+        //skip with php <7.0 due to bug in old phpunit versions
+        //https://github.com/sebastianbergmann/phpunit/issues/2520
+        if (version_compare(phpversion(), '7.0.0', '>=')) {
+            $I->seeInTitle('');
+        }        
         $I->seeInSource('<meta name="description">');
         $I->seeInSource('<meta name="keywords">');
         $I->seeInSource('<meta name="robots" content="index,follow">');
