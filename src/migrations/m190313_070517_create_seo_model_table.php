@@ -30,7 +30,7 @@ class m190313_070517_create_seo_model_table extends Migration
             'rel_canonical' => $this->string()->defaultValue(null),
             'meta_noindex' => $this->boolean()->notNull()->defaultValue(false),
             'meta_nofollow' => $this->boolean()->notNull()->defaultValue(false),
-            'use_common' => $this->boolean()->notNull()->defaultValue(false),
+            'dont_use_empty' => $this->boolean()->notNull()->defaultValue(false),
         ], $tableOptions);
 
     }

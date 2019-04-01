@@ -35,17 +35,27 @@ class SeoModelCest
         $I->seeInSource('<meta name="description" content="Post 1 Meta Description">');
         $I->seeInSource('<meta name="keywords" content="Post 1 Meta Keywords">');
         $I->seeInSource('<meta name="robots" content="index,follow">');
-        $I->seeInSource('<link href="http://somepost.com" rel="canonical">');
+        $I->seeInSource('<link href="https://post1.com" rel="canonical">');
     }
 
     public function checkSitePostWithoutSeoModel(FunctionalTester $I)
     {
         $I->amOnRoute('site/post', ['id' => 2]);
         $I->wantTo('see empty seo values');
-        $I->seeInTitle('Post 2');
+        $I->seeInTitle('');
         $I->seeInSource('<meta name="description">');
         $I->seeInSource('<meta name="keywords">');
         $I->seeInSource('<meta name="robots" content="index,follow">');
+    }
+
+    public function checkSitePostWithWithDefaultValuesInsteadOfEmpty(FunctionalTester $I)
+    {
+        $I->amOnRoute('site/post', ['id' => 3]);
+        $I->wantTo('see default values instead of empty seo-model values');
+        $I->seeInTitle('Post 3');
+        $I->seeInSource('<meta name="description" content="Site Any Action Meta Description">');
+        $I->seeInSource('<meta name="keywords" content="Site Any Action Meta Keywords">');
+        $I->seeInSource('<link href="https://site.any" rel="canonical">');
     }
 
 }

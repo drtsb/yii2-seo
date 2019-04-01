@@ -10,8 +10,8 @@ Install [composer](http://getcomposer.org/download/) dependencies
 composer install
 ``` 
 
-Rename **codeception.yml.dist** to **codeception.yml** and **/tests/\_app/config/db-local.php.dist** to **db-local.php**
-Then set up your DB settings in both files.
+Rename `codeception.yml.dist` to `codeception.yml` and `/tests/\_app/config/db-local.php.dist` to `db-local.php`
+Then create test DB (named `yii2seotest` by default) and set up it in both files.
 
 Apply migrations
 ```

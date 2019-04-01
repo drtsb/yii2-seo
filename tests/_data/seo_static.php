@@ -22,6 +22,7 @@ return [
         'meta_description' => 'Site Any Action Meta Description',
         'meta_keywords' => 'Site Any Action Meta Keywords',
         'meta_noindex' => true,
+        'rel_canonical' => 'https://site.any',
     ],
     'seo-any-controller-index' => [
         'created_at' => $time,
@@ -43,6 +44,6 @@ return [
         'meta_keywords' => 'Any Controller Any Action Meta Keywords',
         'meta_noindex' => true,
         'meta_nofollow' => true,
-        'rel_canonical' => 'https://google.com',
+        'rel_canonical' => 'https://any.any',
     ],
 ];

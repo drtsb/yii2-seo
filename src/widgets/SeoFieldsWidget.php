@@ -46,6 +46,8 @@ class SeoFieldsWidget extends \yii\base\Widget
 
         $html[] = $this->form->field($this->model, 'meta_nofollow')->checkBox();
 
+        $html[] = $this->form->field($this->model, 'dont_use_empty')->checkBox();
+
 
         $html[] = Html::endTag('fieldset');
 

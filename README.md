@@ -130,6 +130,7 @@ public function behaviors()
                     'meta_noindex' => true,
                     'meta_nofollow' => true,
                     'rel_canonical' => 'site/index', // or 'http://some.site'
+                    'dont_use_empty' => true, // Default value false
                 ];
             },
         ],

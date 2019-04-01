@@ -55,7 +55,7 @@ class SeoStaticCest
         $I->seeInSource('<meta name="description" content="Any Controller Any Action Meta Description">');
         $I->seeInSource('<meta name="keywords" content="Any Controller Any Action Meta Keywords">');
         $I->seeInSource('<meta name="robots" content="noindex,nofollow">');
-        $I->seeInSource('<link href="https://google.com" rel="canonical">');
+        $I->seeInSource('<link href="https://any.any" rel="canonical">');
     }
 
 }
