@@ -5,6 +5,8 @@ php:
  - 7.0
  - 7.1
  - 7.2
+ - 7.3
+ - 7.4
 
 install:
  - travis_retry composer self-update && composer --version
@@ -20,9 +22,6 @@ before_script:
  - mysql -e 'CREATE DATABASE `yii2seotest`;';
  - php tests/_app/yii migrate/up --interactive=0
 
-# codeception config
- - cp codeception.yml.dist codeception.yml
-
 script:
- - composer validate --no-check-lock
+ - vendor/bin/codecept build
  - vendor/bin/codecept run

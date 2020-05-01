@@ -2,26 +2,26 @@
 
 namespace drtsb\yii\seo\widgets;
 
-use Yii;
-use yii\helpers\Html;
-use yii\base\InvalidConfigException;
-
 use drtsb\yii\seo\SeoAsset;
-use drtsb\yii\seo\Module;
+use yii\base\InvalidConfigException;
+use yii\base\Widget;
+use yii\helpers\Html;
 
-class SeoFieldsWidget extends \yii\base\Widget
+class SeoFieldsWidget extends Widget
 {
-
-    public $form = null;
-    public $model = null;
+    public $form;
+    public $model;
     public $title = "SEO";
-    
+
+    /**
+     * @throws InvalidConfigException
+     */
     public function init()
     {
         parent::init();
 
-        if (is_null($this->form) || is_null($this->model) ) {
-            throw new InvalidConfigException( 'Required options "form" and "model" are missed.' );
+        if (is_null($this->form) || is_null($this->model)) {
+            throw new InvalidConfigException('Required options "form" and "model" are missed.');
         }
 
         SeoAsset::register($this->getView());
@@ -52,7 +52,5 @@ class SeoFieldsWidget extends \yii\base\Widget
         $html[] = Html::endTag('fieldset');
 
         return implode("\n", $html);
-
     }
-
 }

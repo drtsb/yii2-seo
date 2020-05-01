@@ -32,11 +32,10 @@ class m190313_070517_create_seo_model_table extends Migration
             'meta_nofollow' => $this->boolean()->notNull()->defaultValue(false),
             'dont_use_empty' => $this->boolean()->notNull()->defaultValue(false),
         ], $tableOptions);
-
     }
 
     public function safeDown()
     {
-        $this->dropTable( 'seo_model' );
+        $this->dropTable('seo_model');
     }
 }

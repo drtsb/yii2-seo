@@ -1,15 +1,19 @@
 <?php
-use drtsb\yii\seo\models\SeoModel;
 
-class SeoModelTest extends \Codeception\Test\Unit
+namespace drtsb\yii\seo\tests\unit\models;
+
+use Codeception\Test\Unit;
+use drtsb\yii\seo\models\SeoModel;
+use app\models\Post;
+
+class SeoModelTest extends Unit
 {
     public function testUniqueModel()
     {
-        $model = new SeoModel(['model_name' => 'app\models\Post', 'model_id' => 1]);
-        $this->assertEquals($model->save(), true);
+        $model = new SeoModel(['model_name' => Post::class, 'model_id' => 1]);
+        $this->assertEquals(true, $model->save());
 
-        $model = new SeoModel(['model_name' => 'app\models\Post', 'model_id' => 1]);
-        $this->assertEquals($model->validate(), false);
+        $model = new SeoModel(['model_name' => Post::class, 'model_id' => 1]);
+        $this->assertEquals(false, $model->validate());
     }
-
 }

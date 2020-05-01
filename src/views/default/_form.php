@@ -1,11 +1,13 @@
 <?php
 
+use drtsb\yii\seo\models\SeoStatic;
 use yii\helpers\Html;
+use yii\web\View;
 use yii\widgets\ActiveForm;
 
-/* @var $this yii\web\View */
-/* @var $model drtsb\yii\seo\models\SeoStatic */
-/* @var $form yii\widgets\ActiveForm */
+/* @var $this View */
+/* @var $model SeoStatic */
+/* @var $form ActiveForm */
 ?>
 
 <div class="seo-form">

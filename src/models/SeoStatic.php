@@ -18,6 +18,7 @@ use yii\base\ErrorException;
  * @property string $meta_description
  * @property string $meta_keywords
  * @property integer $meta_noindex
+ * @property string $title
  * @property integer $meta_nofollow
  */
 class SeoStatic extends Seo
@@ -50,14 +51,14 @@ class SeoStatic extends Seo
      */
     public function attributeLabels()
     {
-        return array_merge( 
+        return array_merge(
             parent::attributeLabels(),
             [
-                'id' => Yii::t('seo', 'ID'),
+                'id'         => Yii::t('seo', 'ID'),
                 'created_at' => Yii::t('seo', 'Created At'),
                 'updated_at' => Yii::t('seo', 'Updated At'),
                 'controller' => Yii::t('seo', 'Controller'),
-                'action' => Yii::t('seo', 'Action'),
+                'action'     => Yii::t('seo', 'Action'),
             ]
         );
     }
@@ -78,6 +79,7 @@ class SeoStatic extends Seo
      */
     public static function findByControllerAndAction($controller, $action)
     {
+        /** @var SeoStatic $seo */
         $seo = self::find()
             ->where(['controller' => [$controller, '*'], 'action' => [$action, '*'], ])
             ->orderBy(['controller' => SORT_DESC, 'action' => SORT_DESC, ])

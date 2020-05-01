@@ -4,6 +4,7 @@ namespace drtsb\yii\seo\models;
 
 use Yii;
 use drtsb\yii\seo\Module;
+use yii\db\ActiveRecord;
 
 /**
  * This is the base Seo models class.
@@ -12,17 +13,19 @@ use drtsb\yii\seo\Module;
  * @property string $meta_description
  * @property string $meta_keywords
  * @property integer $meta_noindex
+ * @property string $follow
+ * @property string $robots
+ * @property string $index
  * @property integer $meta_nofollow
  */
-abstract class Seo extends \yii\db\ActiveRecord
+abstract class Seo extends ActiveRecord
 {
-
     /**
      * @inheritdoc
      */
     public function init()
     {
-        if (empty(\Yii::$app->i18n->translations['seo'])) {
+        if (empty(Yii::$app->i18n->translations['seo'])) {
             Module::registerTranslations();
         }
         parent::init();
@@ -45,12 +48,12 @@ abstract class Seo extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'meta_title' => Yii::t('seo', 'Meta Title'),
+            'meta_title'       => Yii::t('seo', 'Meta Title'),
             'meta_description' => Yii::t('seo', 'Meta Description'),
-            'meta_keywords' => Yii::t('seo', 'Meta Keywords'),
-            'meta_noindex' => Yii::t('seo', 'NOINDEX'),
-            'meta_nofollow' => Yii::t('seo', 'NOFOLLOW'),
-            'rel_canonical' => Yii::t('seo', 'Canonical Link'),
+            'meta_keywords'    => Yii::t('seo', 'Meta Keywords'),
+            'meta_noindex'     => Yii::t('seo', 'NOINDEX'),
+            'meta_nofollow'    => Yii::t('seo', 'NOFOLLOW'),
+            'rel_canonical'    => Yii::t('seo', 'Canonical Link'),
         ];
     }
 
@@ -75,7 +78,6 @@ abstract class Seo extends \yii\db\ActiveRecord
      */
     public function getRobots()
     {
-        return $this->index.','.$this->follow;
+        return $this->index . ',' . $this->follow;
     }
-
 }

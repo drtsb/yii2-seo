@@ -1,18 +1,23 @@
 <?php
 
-use app\fixtures\SeoStaticFixture;
+namespace drtsb\yii\seo\tests\functional;
+
+use drtsb\yii\seo\tests\FunctionalTester;
+use yii\base\ErrorException;
 
 class NoDefaultSeoStaticCest
 {
-
     /**
-     * @expectedException yii\base\ErrorException
+     * @expectedException ErrorException
+     * @param FunctionalTester $I
      */
     public function checkNoDefaultSeoStatic(FunctionalTester $I)
     {
-        $I->expectException(new yii\base\ErrorException('No default SEO values found.', 1), function() use ($I) {
-            $I->amOnRoute('site/index');
-        });
+        $I->expectException(
+            new ErrorException('No default SEO values found.', 1),
+            static function () use ($I) {
+                $I->amOnRoute('site/index');
+            }
+        );
     }
-
 }

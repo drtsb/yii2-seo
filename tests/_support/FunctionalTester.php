@@ -1,5 +1,11 @@
 <?php
 
+namespace drtsb\yii\seo\tests;
+
+use Codeception\Actor;
+use Codeception\Lib\Friend;
+use drtsb\yii\seo\tests\_generated\FunctionalTesterActions;
+
 /**
  * Inherited Methods
  * @method void wantToTest($text)
@@ -11,14 +17,13 @@
  * @method void am($role)
  * @method void lookForwardTo($achieveValue)
  * @method void comment($description)
- * @method \Codeception\Lib\Friend haveFriend($name, $actorClass = NULL)
+ * @method Friend haveFriend($name, $actorClass = NULL)
  *
  * @SuppressWarnings(PHPMD)
  */
-class FunctionalTester extends \Codeception\Actor
+class FunctionalTester extends Actor
 {
-    use _generated\FunctionalTesterActions;
-
+    use FunctionalTesterActions;
 
     public function seeValidationError($message)
     {

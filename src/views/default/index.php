@@ -1,11 +1,17 @@
 <?php
 
+use drtsb\yii\seo\models\SeoStaticSearch;
+use yii\grid\SerialColumn;
+use yii\grid\ActionColumn;
+use yii\data\ActiveDataProvider;
 use yii\helpers\Html;
 use yii\helpers\StringHelper;
 use yii\grid\GridView;
+use yii\web\View;
 
-/* @var $this yii\web\View */
-/* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $this View */
+/* @var $dataProvider ActiveDataProvider */
+/* @var $searchModel SeoStaticSearch */
 
 $this->title = Yii::t('seo', 'SEO');
 $this->params['breadcrumbs'][] = $this->title;
@@ -22,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['class' => SerialColumn::class],
 
             //'id',
             //'created_at:datetime',
@@ -31,26 +37,27 @@ $this->params['breadcrumbs'][] = $this->title;
             'action',
             [
                 'attribute' => 'meta_title',
-                'value' => function ( $model ) {
-                    return empty( $model->meta_title ) ? null : StringHelper::truncate( $model->meta_title , 25 );
+                'value' => static function ($model) {
+                    return empty($model->meta_title) ? null : StringHelper::truncate($model->meta_title, 25);
                 },
             ],
             [
                 'attribute' => 'meta_description',
-                'value' => function ( $model ) {
-                    return empty( $model->meta_description ) ? null : StringHelper::truncate( $model->meta_description , 25 );
+                'value' => static function ($model) {
+                    return empty($model->meta_description) ? null
+                        : StringHelper::truncate($model->meta_description, 25);
                 },
             ],
             [
                 'attribute' => 'meta_keywords',
-                'value' => function ( $model ) {
-                    return empty( $model->meta_keywords ) ? null : StringHelper::truncate( $model->meta_keywords , 25 );
+                'value' => static function ($model) {
+                    return empty($model->meta_keywords) ? null : StringHelper::truncate($model->meta_keywords, 25);
                 },
             ],
             'meta_noindex:boolean',
             'meta_nofollow:boolean',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => ActionColumn::class],
         ],
-    ]); ?>
+    ]) ?>
 </div>

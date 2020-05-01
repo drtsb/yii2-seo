@@ -34,7 +34,7 @@ class m190301_072527_create_seo_static_table extends Migration
             'meta_nofollow' => $this->boolean()->notNull()->defaultValue(false),
         ], $tableOptions);
 
-        $this->insert( 'seo_static', [
+        $this->insert('seo_static', [
             'created_at' => time(),
             'updated_at' => time(),
             'controller' => '*',
@@ -47,6 +47,6 @@ class m190301_072527_create_seo_static_table extends Migration
 
     public function safeDown()
     {
-        $this->dropTable( 'seo_static' );
+        $this->dropTable('seo_static');
     }
 }

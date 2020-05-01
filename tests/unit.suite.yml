@@ -1,6 +1,5 @@
 actor: UnitTester
 modules:
     enabled:
-        - Yii2:
-            part: [orm, email, fixtures]
+        - Yii2
         - Asserts

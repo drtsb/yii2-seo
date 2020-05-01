@@ -1,12 +1,14 @@
 <?php
 
-use app\models\Post;
-use drtsb\yii\seo\models\SeoStatic;
+namespace drtsb\yii\seo\tests\functional;
+
 use app\fixtures\SeoStaticFixture;
+use drtsb\yii\seo\models\SeoStatic;
+use drtsb\yii\seo\tests\FunctionalTester;
+use Yii;
 
 class ModuleCest
 {
-
     /**
      * @return array
      */
@@ -48,5 +50,4 @@ class ModuleCest
         $I->assertEquals(true, $record->meta_noindex);
         $I->assertEquals(true, $record->meta_nofollow);
     }
-
 }

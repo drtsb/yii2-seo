@@ -6,7 +6,6 @@ use yii\web\AssetBundle;
 
 class SeoAsset extends AssetBundle
 {
-
     public $css = [
         'css/seo.css',
     ];
@@ -16,5 +15,4 @@ class SeoAsset extends AssetBundle
         $this->sourcePath = __DIR__ . '/assets';
         parent::init();
     }
-
 }

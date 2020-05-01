@@ -17,17 +17,15 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'Create' => 'Создать',
+    'Update' => 'Изменить',
+    'Delete' => 'Удалить',
+    'Save'   => 'Сохранить',
 
-	'Create' => 'Создать',
-	'Update' => 'Изменить',
-	'Delete' => 'Удалить',
-	'Save' => 'Сохранить',
+    'Created At'       => 'Создано',
+    'Updated At'       => 'Изменено',
+    'Canonical Link'   => 'Каноническая ссылка',
+    'Don\'t use empty' => 'Не использовать пустые значения',
 
-	'Created At' => 'Создано',
-	'Updated At' => 'Изменено',
-	'Canonical Link' => 'Каноническая ссылка',
-	'Don\'t use empty' => 'Не использовать пустые значения',
-
-	'Are you sure you want to delete this item?' => 'Вы действительно хотите удалить эту запись?',
-
+    'Are you sure you want to delete this item?' => 'Вы действительно хотите удалить эту запись?',
 ];

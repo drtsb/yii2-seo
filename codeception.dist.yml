@@ -1,0 +1,18 @@
+namespace: drtsb\yii\seo\tests
+paths:
+    tests: tests
+    log: tests/_output
+    data: tests/_data
+    helpers: tests/_support
+bootstrap: bootstrap.php
+settings:
+    colors: true
+    memory_limit: 1024M
+modules:
+    config:
+        Db:
+            dsn: 'mysql:host=localhost;dbname=yii2seotest'
+            user: 'root'
+            password: ''
+        Yii2:
+            configFile: 'tests/_app/config/test.php'

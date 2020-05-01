@@ -2,24 +2,32 @@
 
 namespace drtsb\yii\seo\behaviors;
 
+use Exception;
 use Yii;
 use yii\base\Behavior;
 use yii\base\InvalidConfigException;
+use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 
 use drtsb\yii\seo\models\SeoModel;
 use drtsb\yii\seo\widgets\SeoFieldsWidget;
 
+/**
+ *
+ * @property SeoModel $seoAttributesFromClosure
+ * @property SeoModel $newSeo
+ * @property SeoModel|ActiveQuery $seo
+ */
 class SeoModelBehavior extends Behavior
 {
-
     /**
-     * @var callable | null
+     * @var callable|null
      */
     public $dataClosure = null;
 
     /**
      * {@inheritdoc}
+     * @throws InvalidConfigException
      */
     public function init()
     {
@@ -63,19 +71,35 @@ class SeoModelBehavior extends Behavior
     }
 
     /**
-     * @return \yii\db\ActiveQuery | drtsb\yii\seo\models\SeoModel
+     * @return ActiveQuery | SeoModel
      */
     public function getSeo()
     {
-        $query = SeoModel::find()->where(['model_name' => get_class($this->owner), 'model_id' => $this->owner->primaryKey]);
-        if ($query->one() !== null) { return $query; }       
+        $query = SeoModel::find()->where(
+            ['model_name' => get_class($this->owner), 'model_id' => $this->owner->primaryKey]
+        );
+        if ($query->one() !== null) {
+            return $query;
+        }
+
         return $this->getNewSeo();
     }
 
     /**
-     * @return drtsb\yii\seo\models\SeoModel
+     * Renders a widget.
+     * @param $form
+     * @return string the rendering result of the widget.
+     * @throws Exception
      */
-    private function getNewSeo()
+    public function seoFields($form)
+    {
+        return SeoFieldsWidget::widget(['form'=>$form, 'model'=>$this->owner->seo]);
+    }
+
+    /**
+     * @return SeoModel
+     */
+    protected function getNewSeo()
     {
         $seo = new SeoModel(['model_name'=>get_class($this->owner), 'model_id' => $this->owner->primaryKey]);
 
@@ -83,24 +107,14 @@ class SeoModelBehavior extends Behavior
     }
 
     /**
-     * @var $seo drtsb\yii\seo\models\SeoModel
-     * @return drtsb\yii\seo\models\SeoModel
+     * @var $seo SeoModel
+     * @return SeoModel
      */
-    private function setSeoAttributesFromClosure(SeoModel $seo)
+    protected function setSeoAttributesFromClosure(SeoModel $seo)
     {
-        if (!is_null($this->dataClosure)){
+        if (!is_null($this->dataClosure)) {
             $seo->setAttributes(call_user_func($this->dataClosure, $this->owner));
         }
         return $seo;
     }
-
-    /**
-     * Renders a widget.
-     * @return string the rendering result of the widget.
-     */
-    public function seoFields($form)
-    {
-        return SeoFieldsWidget::widget(['form'=>$form, 'model'=>$this->owner->seo]);
-    }
-
 }

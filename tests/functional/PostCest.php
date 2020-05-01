@@ -1,12 +1,13 @@
 <?php
 
-use app\models\Post;
+namespace drtsb\yii\seo\tests\functional;
+
 use app\fixtures\PostFixture;
-use app\fixtures\SeoStaticFixture;
+use app\models\Post;
+use drtsb\yii\seo\tests\FunctionalTester;
 
 class PostCest
 {
-
     public function checkPostIndex(FunctionalTester $I)
     {
         $I->haveFixtures([
@@ -40,5 +41,4 @@ class PostCest
         $I->assertEquals('Some Post', $post->title);
         $I->assertEquals('Some Post Meta Title', $post->seo->meta_title);
     }
-
 }

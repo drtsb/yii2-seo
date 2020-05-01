@@ -33,7 +33,3 @@ codeception.yml
 
 # no need in composer distribution
 /composer.phar
-
-# composer
-composer.lock
-

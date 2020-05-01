@@ -1,5 +1,9 @@
 <?php
 
+use yii\console\controllers\MigrateController;
+use yii\log\FileTarget;
+use yii\caching\FileCache;
+
 $db = require __DIR__ . '/db.php';
 
 return [
@@ -11,16 +15,16 @@ return [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
         '@tests' => '@app/tests',
-        '@drtsb/yii/seo' => dirname(dirname(dirname(__DIR__))) . '/src',
+        '@drtsb/yii/seo' => dirname(__DIR__, 3) . '/src',
     ],
     'components' => [
         'cache' => [
-            'class' => 'yii\caching\FileCache',
+            'class' => FileCache::class,
         ],
         'log' => [
             'targets' => [
                 [
-                    'class' => 'yii\log\FileTarget',
+                    'class' => FileTarget::class,
                     'levels' => ['error', 'warning'],
                 ],
             ],
@@ -34,11 +38,10 @@ return [
             'class' => 'yii\faker\FixtureController',
         ],*/
         'migrate' => [
-            'class' => 'yii\console\controllers\MigrateController',
+            'class' => MigrateController::class,
             'migrationNamespaces' => [
                 'drtsb\yii\seo\migrations',
             ],
         ],
     ],
-    
 ];

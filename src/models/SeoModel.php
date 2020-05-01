@@ -51,7 +51,7 @@ class SeoModel extends Seo
      */
     public function attributeLabels()
     {
-        return array_merge( 
+        return array_merge(
             parent::attributeLabels(),
             [
                 'dont_use_empty' => Yii::t('seo', 'Don\'t use empty'),
@@ -66,5 +66,4 @@ class SeoModel extends Seo
     {
         return parent::rules();
     }
-
 }

@@ -1,12 +1,14 @@
 <?php
 
+namespace drtsb\yii\seo\tests\functional;
+
 use app\fixtures\SeoModelFixture;
 use app\fixtures\SeoStaticFixture;
 use app\fixtures\PostFixture;
+use drtsb\yii\seo\tests\FunctionalTester;
 
 class SeoModelCest
 {
-
     /**
      * @return array
      */
@@ -46,7 +48,7 @@ class SeoModelCest
         //https://github.com/sebastianbergmann/phpunit/issues/2520
         if (version_compare(phpversion(), '7.0.0', '>=')) {
             $I->seeInTitle('');
-        }        
+        }
         $I->seeInSource('<meta name="description">');
         $I->seeInSource('<meta name="keywords">');
         $I->seeInSource('<meta name="robots" content="index,follow">');
@@ -61,5 +63,4 @@ class SeoModelCest
         $I->seeInSource('<meta name="keywords" content="Site Any Action Meta Keywords">');
         $I->seeInSource('<link href="https://site.any" rel="canonical">');
     }
-
 }

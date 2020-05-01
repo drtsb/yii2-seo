@@ -1,12 +1,14 @@
 <?php
 
+namespace drtsb\yii\seo\tests\functional;
+
+use drtsb\yii\seo\tests\FunctionalTester;
 use yii\helpers\Url;
 
 use app\fixtures\SeoStaticFixture;
 
 class SeoStaticCest
 {
-
     /**
      * @return array
      */
@@ -57,5 +59,4 @@ class SeoStaticCest
         $I->seeInSource('<meta name="robots" content="noindex,nofollow">');
         $I->seeInSource('<link href="https://any.any" rel="canonical">');
     }
-
 }

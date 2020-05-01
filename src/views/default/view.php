@@ -1,15 +1,18 @@
 <?php
 
+use drtsb\yii\seo\models\SeoStatic;
 use yii\helpers\Html;
+use yii\web\View;
+use yii\web\YiiAsset;
 use yii\widgets\DetailView;
 
-/* @var $this yii\web\View */
-/* @var $model drtsb\yii\seo\models\SeoStatic */
+/* @var $this View */
+/* @var $model SeoStatic */
 
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('seo', 'SEO'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-\yii\web\YiiAsset::register($this);
+YiiAsset::register($this);
 ?>
 <div class="seo-view">
 

@@ -1,15 +1,21 @@
 <?php
-use app\models\PureArticle;
 
-class DataClosureTest extends \Codeception\Test\Unit
+namespace drtsb\yii\seo\tests\unit;
+
+use app\models\PureArticle;
+use Codeception\Test\Unit;
+use drtsb\yii\seo\behaviors\SeoModelBehavior;
+use yii\base\InvalidConfigException;
+
+class DataClosureTest extends Unit
 {
     public function testFullSetOfSeoAttributes()
     {
         $model = new PureArticle(['title' => 'Some Article']);
 
         $model->attachBehavior('seo', [
-            'class' => 'drtsb\yii\seo\behaviors\SeoModelBehavior',
-            'dataClosure' => function($model) {
+            'class' => SeoModelBehavior::class,
+            'dataClosure' => static function ($model) {
                 return [
                     'meta_title' => $model->title . ' Title',
                     'meta_description' => $model->title . ' Description',
@@ -22,11 +28,11 @@ class DataClosureTest extends \Codeception\Test\Unit
 
         $model->save();
 
-        $this->assertEquals($model->seo->meta_title, 'Some Article Title');
-        $this->assertEquals($model->seo->meta_description, 'Some Article Description');
-        $this->assertEquals($model->seo->meta_keywords, 'Some Article Keywords');
-        $this->assertEquals($model->seo->meta_noindex, true);
-        $this->assertEquals($model->seo->meta_nofollow, true);
+        $this->assertEquals('Some Article Title', $model->seo->meta_title);
+        $this->assertEquals('Some Article Description', $model->seo->meta_description);
+        $this->assertEquals('Some Article Keywords', $model->seo->meta_keywords);
+        $this->assertEquals(true, $model->seo->meta_noindex);
+        $this->assertEquals(true, $model->seo->meta_nofollow);
     }
 
     public function testEmptySetOfSeoAttributes()
@@ -34,19 +40,19 @@ class DataClosureTest extends \Codeception\Test\Unit
         $model = new PureArticle();
 
         $model->attachBehavior('seo', [
-            'class' => 'drtsb\yii\seo\behaviors\SeoModelBehavior',
-            'dataClosure' => function($model) {
+            'class' => SeoModelBehavior::class,
+            'dataClosure' => static function () {
                 return [];
             }
         ]);
 
         $model->save();
 
-        $this->assertEquals($model->seo->meta_title, null);
-        $this->assertEquals($model->seo->meta_description, null);
-        $this->assertEquals($model->seo->meta_keywords, null);
-        $this->assertEquals($model->seo->meta_noindex, false);
-        $this->assertEquals($model->seo->meta_nofollow, false);
+        $this->assertEquals(null, $model->seo->meta_title);
+        $this->assertEquals(null, $model->seo->meta_description);
+        $this->assertEquals(null, $model->seo->meta_keywords);
+        $this->assertEquals(false, $model->seo->meta_noindex);
+        $this->assertEquals(false, $model->seo->meta_nofollow);
     }
 
     public function testUpdatedBehaviorClosure()
@@ -54,8 +60,8 @@ class DataClosureTest extends \Codeception\Test\Unit
         $model = new PureArticle();
 
         $model->attachBehavior('seo', [
-            'class' => 'drtsb\yii\seo\behaviors\SeoModelBehavior',
-            'dataClosure' => function($model) {
+            'class' => SeoModelBehavior::class,
+            'dataClosure' => static function () {
                 return [
                     'meta_title' => 'Original Title',
                     'meta_description' => 'Original Description',
@@ -69,8 +75,8 @@ class DataClosureTest extends \Codeception\Test\Unit
         $model->detachBehavior('seo');
 
         $model->attachBehavior('seo', [
-            'class' => 'drtsb\yii\seo\behaviors\SeoModelBehavior',
-            'dataClosure' => function($model) {
+            'class' => SeoModelBehavior::class,
+            'dataClosure' => static function () {
                 return [
                     'meta_title' => 'Updated Title',
                     'meta_description' => 'Updated Description',
@@ -83,22 +89,20 @@ class DataClosureTest extends \Codeception\Test\Unit
 
         $model->save();
 
-        $this->assertEquals($model->seo->meta_title, 'Updated Title');
-        $this->assertEquals($model->seo->meta_description, 'Updated Description');
-        $this->assertEquals($model->seo->meta_keywords, 'Updated Keywords');
-        $this->assertEquals($model->seo->meta_noindex, true);
-        $this->assertEquals($model->seo->meta_nofollow, true);
+        $this->assertEquals('Updated Title', $model->seo->meta_title);
+        $this->assertEquals('Updated Description', $model->seo->meta_description);
+        $this->assertEquals('Updated Keywords', $model->seo->meta_keywords);
+        $this->assertEquals(true, $model->seo->meta_noindex);
+        $this->assertEquals(true, $model->seo->meta_nofollow);
     }
 
-    /**
-     * @expectedException yii\base\InvalidConfigException
-     */
     public function testInvalidDataClosure()
     {
         $model = new PureArticle();
 
+        $this->expectException(InvalidConfigException::class);
         $model->attachBehavior('seo', [
-            'class' => 'drtsb\yii\seo\behaviors\SeoModelBehavior',
+            'class' => SeoModelBehavior::class,
             'dataClosure' => 'something',
         ]);
     }

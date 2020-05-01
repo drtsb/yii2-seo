@@ -1,4 +1,8 @@
 <?php
+
+use app\models\User;
+use drtsb\yii\seo\Module;
+
 $db = require __DIR__ . '/db.php';
 
 /**
@@ -8,14 +12,14 @@ return [
     'id' => 'yii2-seo-tests',
     'basePath' => dirname(__DIR__),
     'aliases' => [
-        '@vendor' => dirname(dirname(dirname(__DIR__))) . '/vendor',
+        '@vendor' => dirname(__DIR__, 3) . '/vendor',
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
     'language' => 'en-US',
     'modules' => [
         'seo' => [
-            'class' => 'drtsb\yii\seo\Module',
+            'class' => Module::class,
             //'accessRoles' => ['admin'],
             //'pagination' => ['pageSize' => 10],
         ],
@@ -26,7 +30,7 @@ return [
             'useFileTransport' => true,
         ],
         'assetManager' => [
-            'basePath' => __DIR__ . '/../web/assets',
+            'basePath' => dirname(__DIR__) . '/web/assets',
         ],
         'urlManager' => [
             'showScriptName' => true,
@@ -36,7 +40,7 @@ return [
             'enableCsrfValidation' => false,
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            'identityClass' => User::class,
         ],
     ],
     'params' => [],
