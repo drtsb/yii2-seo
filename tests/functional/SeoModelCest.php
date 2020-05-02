@@ -11,9 +11,11 @@ class SeoModelCest
 {
     /**
      * @return array
+     * phpcs:disable
      */
     public function _fixtures()
     {
+        /** phpcs:enable */
         return [
             'seo-model' => [
                 'class' => SeoModelFixture::class,

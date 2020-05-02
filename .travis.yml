@@ -4,9 +4,6 @@ services:
  - mysql
 
 php:
- - 5.6
- - 7.0
- - 7.1
  - 7.2
  - 7.3
  - 7.4
@@ -26,5 +23,7 @@ before_script:
  - php tests/_app/yii migrate/up --interactive=0
 
 script:
+ - vendor/bin/phpcs --standard=PSR2 src/
+ - vendor/bin/phpcs --standard=PSR2 --extensions=php tests/
  - vendor/bin/codecept build
  - vendor/bin/codecept run

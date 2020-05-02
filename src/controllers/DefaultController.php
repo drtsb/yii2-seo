@@ -138,6 +138,6 @@ class DefaultController extends Controller
         if (($model = SeoStatic::findOne($id)) !== null) {
             return $model;
         }
-        throw new NotFoundHttpException( 'The requested page does not exist.' );
+        throw new NotFoundHttpException(Yii::t('seo', 'The requested page does not exist.'));
     }
 }

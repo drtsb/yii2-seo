@@ -2,10 +2,10 @@
 
 namespace app\controllers;
 
-use Yii;
-use yii\web\Controller;
-use drtsb\yii\seo\behaviors\SeoBehavior;
 use app\models\Post;
+use drtsb\yii\seo\behaviors\SeoBehavior;
+use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 
 class SiteController extends Controller
 {
@@ -47,6 +47,7 @@ class SiteController extends Controller
      * Displays a single Post model.
      * @param integer $id
      * @return mixed
+     * @throws NotFoundHttpException
      */
     public function actionPost($id)
     {
@@ -66,9 +67,7 @@ class SiteController extends Controller
     {
         if (($model = Post::findOne($id)) !== null) {
             return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
         }
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
-
 }

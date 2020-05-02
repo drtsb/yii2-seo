@@ -6,6 +6,7 @@ use yii\db\Migration;
 
 /**
  * Handles the creation of table `seo_static`.
+ * phpcs:ignoreFile
  */
 class m190301_072527_create_seo_static_table extends Migration
 {
@@ -14,7 +15,6 @@ class m190301_072527_create_seo_static_table extends Migration
      */
     public function safeUp()
     {
-
         $tableOptions = null;
         if ($this->db->driverName === 'mysql') {
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=InnoDB';

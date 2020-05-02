@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "article".
@@ -10,7 +10,7 @@ use Yii;
  * @property int $id
  * @property string $title
  */
-class PureArticle extends \yii\db\ActiveRecord
+class PureArticle extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -41,5 +41,4 @@ class PureArticle extends \yii\db\ActiveRecord
             'title' => 'Title',
         ];
     }
-
 }

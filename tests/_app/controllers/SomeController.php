@@ -3,8 +3,9 @@
 namespace app\controllers;
 
 use drtsb\yii\seo\behaviors\SeoBehavior;
+use yii\web\Controller;
 
-class SomeController extends \yii\web\Controller
+class SomeController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -25,5 +26,4 @@ class SomeController extends \yii\web\Controller
     {
         return $this->render('action');
     }
-
 }

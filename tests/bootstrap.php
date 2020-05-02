@@ -1,4 +1,5 @@
 <?php
+/** phpcs:ignoreFile */
 // ensure we get report on all possible php errors
 use Codeception\Util\Autoload;
 

@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use drtsb\yii\seo\models\SeoModel;
+use drtsb\yii\seo\behaviors\SeoModelBehavior;
 
 /**
  * This is the model class for table "article".
@@ -18,8 +19,8 @@ class Article extends PureArticle
     {
         return [
             'seo' => [
-                'class' => 'drtsb\yii\seo\behaviors\SeoModelBehavior',
-                'dataClosure' => function($model) {
+                'class' => SeoModelBehavior::class,
+                'dataClosure' => static function ($model) {
                     return [
                         'meta_title' => $model->title . ' Title',
                         'meta_description' => $model->title . ' Description',
@@ -31,5 +32,4 @@ class Article extends PureArticle
             ],
         ];
     }
-
 }

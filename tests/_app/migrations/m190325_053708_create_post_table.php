@@ -4,6 +4,7 @@ use yii\db\Migration;
 
 /**
  * Handles the creation of table `post`.
+ * phpcs:ignoreFile
  */
 class m190325_053708_create_post_table extends Migration
 {
@@ -25,6 +26,6 @@ class m190325_053708_create_post_table extends Migration
 
     public function safeDown()
     {
-        $this->dropTable( 'post' );
+        $this->dropTable('post');
     }
 }

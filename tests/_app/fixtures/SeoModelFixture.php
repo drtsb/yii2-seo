@@ -1,12 +1,14 @@
 <?php
+
 namespace app\fixtures;
 
 use yii\test\ActiveFixture;
+use drtsb\yii\seo\models\SeoModel;
 
 class SeoModelFixture extends ActiveFixture
 {
-    public $modelClass = 'drtsb\yii\seo\models\SeoModel';
+    public $modelClass = SeoModel::class;
     public $depends = [
-    	'app\fixtures\PostFixture',
+        PostFixture::class,
     ];
 }

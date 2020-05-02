@@ -22,7 +22,7 @@
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "*",
-        "codeception/phpunit-wrapper": "<7.0",
+        "codeception/phpunit-wrapper": "<9.0",
         "codeception/codeception": "^4.0",
         "codeception/module-yii2": "^1.0",
         "codeception/module-asserts": "^1.2",

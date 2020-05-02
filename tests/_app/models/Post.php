@@ -2,7 +2,8 @@
 
 namespace app\models;
 
-use Yii;
+use drtsb\yii\seo\behaviors\SeoModelBehavior;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "post".
@@ -10,7 +11,7 @@ use Yii;
  * @property int $id
  * @property string $title
  */
-class Post extends \yii\db\ActiveRecord
+class Post extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -49,9 +50,8 @@ class Post extends \yii\db\ActiveRecord
     {
         return [
             'seo' => [
-                'class' => 'drtsb\yii\seo\behaviors\SeoModelBehavior',
+                'class' => SeoModelBehavior::class,
             ],
         ];
     }
-
 }

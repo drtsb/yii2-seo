@@ -6,6 +6,7 @@ use yii\db\Migration;
 
 /**
  * Handles the creation of table `seo_model`.
+ * phpcs:ignoreFile
  */
 class m190313_070517_create_seo_model_table extends Migration
 {

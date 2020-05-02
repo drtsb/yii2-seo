@@ -11,9 +11,11 @@ class SeoStaticCest
 {
     /**
      * @return array
+     * phpcs:disable
      */
     public function _fixtures()
     {
+        /** phpcs:enable */
         return [
             'seo-static' => [
                 'class' => SeoStaticFixture::class,
