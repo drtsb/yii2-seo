@@ -11,6 +11,7 @@ use yii\db\ActiveRecord;
 
 use drtsb\yii\seo\models\SeoModel;
 use drtsb\yii\seo\widgets\SeoFieldsWidget;
+use yii\web\Application;
 
 /**
  *
@@ -51,16 +52,21 @@ class SeoModelBehavior extends Behavior
     }
 
     /**
+     * @param $event
      * @return void
      */
     public function saveSeo($event)
     {
+
         $seo = $this->setSeoAttributesFromClosure($this->owner->seo);
-        $seo->load(Yii::$app->request->post());
+        if (Yii::$app instanceof Application) {
+            $seo->load(Yii::$app->request->post());
+        }
         $seo->save();
     }
 
     /**
+     * @param $event
      * @return void
      */
     public function deleteSeo($event)

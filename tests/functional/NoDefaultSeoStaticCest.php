@@ -13,7 +13,7 @@ class NoDefaultSeoStaticCest
      */
     public function checkNoDefaultSeoStatic(FunctionalTester $I)
     {
-        $I->expectException(
+        $I->expectThrowable(
             new ErrorException('No default SEO values found.', 1),
             static function () use ($I) {
                 $I->amOnRoute('site/index');
